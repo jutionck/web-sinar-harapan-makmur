@@ -912,13 +912,18 @@ section {
     border-radius: 50px;
     transition: 0.5s;
     margin: 10px;
+    background-color: transparent;
+    background-repeat: no-repeat;
     border: 2px solid #fff;
+    cursor: pointer;
+    overflow: hidden;
     color: #fff;
 }
 
 .cta .cta-btn:hover {
     background: #47b2e4;
     border: 2px solid #47b2e4;
+    color: #fff;
 }
 
 @media (max-width: 1024px) {

@@ -1,6 +1,20 @@
 import React, {Component} from 'react';
 
 class Contact extends Component {
+  state = {
+    btnText: 'Hubung Sekarang',
+}
+
+  btnSend = () => {
+    this.setState({
+      btnText: 'Terima Kasih!'
+    });
+    setTimeout(() => {
+      this.setState({
+        btnText :'Hubungi Sekarang'
+      })
+    }, 2000)
+  }
   render() {
     return (
       <section id="cta" className="cta">
@@ -13,7 +27,7 @@ class Contact extends Component {
                 laborum.</p>
             </div>
             <div className="col-lg-3 cta-btn-container text-center">
-              <a className="cta-btn align-middle" href="#">Hubungi Sekarang</a>
+              <button className="cta-btn align-middle" onClick={this.btnSend}>{this.state.btnText}</button>
             </div>
           </div>
         </div>
