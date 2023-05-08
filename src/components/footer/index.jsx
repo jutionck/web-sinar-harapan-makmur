@@ -59,7 +59,7 @@ export default class Footer extends React.Component {
                 <ul className="list-unstyled d-flex justify-content-between">
                   {
                     socialMedia.map((sm) => (
-                      <li className="flex-fill">
+                      <li className="flex-fill" key={sm.image}>
                         <img src={sm.image} alt={sm.alt} srcSet=""/>
                       </li>
                     ))

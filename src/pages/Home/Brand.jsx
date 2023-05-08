@@ -35,7 +35,7 @@ class Brand extends Component {
           <div className="row">
             {
               brands.map((brand) => (
-                <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" key={brand.imageSrc}>
                   <img src={brand.imageSrc} className="img-fluid" alt={brand.alt} />
                 </div>
               ))
