@@ -45,7 +45,9 @@ class ContactForm extends Component {
             <textarea className="form-control" placeholder="Leave a comment here" id="message" style={{ height: '100px' }} onChange={this.handleChange} value={this.state.message}></textarea>
             <label htmlFor="message">Pesan</label>
           </div>
-          <button type="submit" className="btn btn-primary mt-3">Kirim Pesan</button>
+          <div className="d-grid gap-2">
+            <button className="btn btn-primary  mt-3" type="submit">Kirim Pesan</button>
+          </div>
         </form>
       </>
     );

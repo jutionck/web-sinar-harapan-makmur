@@ -14,6 +14,11 @@ class Contact extends Component {
       message: formData,
       success: !this.state.success
     })
+    setTimeout(() => {
+      this.setState({
+        success: false
+      })
+    }, 2000)
   }
 
   render() {
