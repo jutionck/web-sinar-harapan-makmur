@@ -2,6 +2,39 @@ import React, {Component} from 'react';
 import StepCredits from '../../assets/step-credits.svg'
 
 class WhyUs extends Component {
+  state = {
+    show: false,
+    faqs: [
+      {
+        id: 1,
+        title: 'Non consectetur a erat nam at lectus urna duis?',
+        description: 'Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.',
+        isCollapsed: true,
+      },
+      {
+        id: 2,
+        title: 'Feugiat scelerisque varius morbi enim nunc?',
+        description: 'Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.',
+        isCollapsed: false,
+      },
+      {
+        id: 3,
+        title: 'Dolor sit amet consectetur adipiscing elit?',
+        description: 'Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar\n' +
+          'elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus\n' +
+          'pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at\n' +
+          'elementum eu facilisis sed odio morbi quis',
+        isCollapsed: false,
+      }
+    ]
+  }
+
+  handleCollapse = (id) => {
+    this.setState(prevState => ({
+      faqs: prevState.faqs.map(faq => faq.id === id ? { ...faq, isCollapsed: !faq.isCollapsed } : faq)
+    }))
+  }
+
   render() {
     const whyUsStyle = {
       backgroundImage: `url(${StepCredits})`,
@@ -21,44 +54,16 @@ class WhyUs extends Component {
               </div>
               <div className="accordion-list">
                 <ul>
-                  <li>
-                    <a data-bs-toggle="collapse" className="collapse"
-                       data-bs-target="#accordion-list-1"><span>01</span> Non consectetur a erat nam at lectus urna
-                      duis? <i className="bx bx-chevron-down icon-show"></i><i
-                        className="bx bx-chevron-up icon-close"></i></a>
-                    <div id="accordion-list-1" className="collapse show" data-bs-parent=".accordion-list">
-                      <p>
-                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non
-                        curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2"
-                       className="collapsed"><span>02</span> Feugiat scelerisque varius morbi enim nunc? <i
-                      className="bx bx-chevron-down icon-show"></i><i className="bx bx-chevron-up icon-close"></i></a>
-                    <div id="accordion-list-2" className="collapse" data-bs-parent=".accordion-list">
-                      <p>
-                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit
-                        laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est
-                        pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt
-                        dui.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3"
-                       className="collapsed"><span>03</span> Dolor sit amet consectetur adipiscing elit? <i
-                      className="bx bx-chevron-down icon-show"></i><i className="bx bx-chevron-up icon-close"></i></a>
-                    <div id="accordion-list-3" className="collapse" data-bs-parent=".accordion-list">
-                      <p>
-                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar
-                        elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus
-                        pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at
-                        elementum eu facilisis sed odio morbi quis
-                      </p>
-                    </div>
-                  </li>
+                  {this.state.faqs.map((faq) => (
+                    <li key={faq.id}>
+                      <a data-bs-toggle="collapse" className="collapse" onClick={() => this.handleCollapse(faq.id)} data-bs-target={`#accordion-list-${faq.id}`}>
+                        <span>0{faq.id}</span> {faq.title} <i className={`bx ${faq.isCollapsed ? 'bx-chevron-down icon-show' : 'bx-chevron-up icon-close'}`}></i>
+                      </a>
+                      <div id={`accordion-list-${faq.id}`} className={`collapse ${ faq.isCollapsed ? `show` : ''}`} data-bs-parent=".accordion-list">
+                        <p>{faq.description}</p>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
